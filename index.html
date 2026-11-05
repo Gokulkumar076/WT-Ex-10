@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Freelancer Portfolio</title>
+    <title>LexCounsel - Legal Advisor</title>
+
     <style>
         * {
             margin: 0;
@@ -12,65 +13,70 @@
         }
 
         body {
-            background: #101827;
-            color: white;
+            background: #f5f6fa;
+            color: #222;
         }
 
         nav {
+            background: #14243a;
+            color: white;
+            padding: 20px 8%;
             display: flex;
             justify-content: space-between;
-            padding: 25px 10%;
-            background: #172337;
+            align-items: center;
         }
 
         nav h2 {
-            color: #38bdf8;
+            color: #d4ad65;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin-left: 25px;
+            margin-left: 20px;
         }
 
         .hero {
+            background: #14243a;
+            color: white;
             text-align: center;
-            padding: 100px 20px;
+            padding: 90px 20px;
         }
 
         .hero h1 {
-            font-size: 45px;
+            font-size: 42px;
             margin-bottom: 15px;
         }
 
         .hero span {
-            color: #38bdf8;
+            color: #d4ad65;
         }
 
         .hero p {
-            color: #b8c4d6;
+            color: #ddd;
             margin-bottom: 25px;
         }
 
         button {
-            background: #38bdf8;
-            color: #101827;
+            background: #d4ad65;
+            color: #14243a;
             border: none;
             padding: 12px 25px;
-            border-radius: 6px;
             cursor: pointer;
+            border-radius: 5px;
         }
 
         section {
-            padding: 55px 10%;
+            padding: 50px 8%;
             text-align: center;
         }
 
-        h2 {
+        section h2 {
             margin-bottom: 25px;
+            color: #14243a;
         }
 
-        .cards {
+        .services {
             display: flex;
             justify-content: center;
             gap: 20px;
@@ -78,23 +84,48 @@
         }
 
         .card {
-            background: #1e2c42;
+            background: white;
             padding: 30px;
-            border-radius: 10px;
             width: 250px;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px #0001;
         }
 
         .card h3 {
-            color: #38bdf8;
-            margin-bottom: 12px;
+            color: #b58b45;
+            margin-bottom: 15px;
+        }
+
+        .page {
+            display: none;
+            min-height: 65vh;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .request {
+            background: #e8edf3;
+            padding: 15px;
+            margin: 25px auto;
+            max-width: 500px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        footer {
+            background: #14243a;
+            color: white;
+            text-align: center;
+            padding: 20px;
         }
 
         input, textarea {
-            display: block;
             width: 100%;
-            padding: 13px;
-            margin: 12px 0;
-            border: none;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
             border-radius: 5px;
         }
 
@@ -102,92 +133,151 @@
             max-width: 450px;
             margin: auto;
         }
-
-        footer {
-            background: #172337;
-            padding: 20px;
-            text-align: center;
-            color: #b8c4d6;
-        }
     </style>
 </head>
 
 <body>
 
 <nav>
-    <h2>MyPortfolio</h2>
+    <h2>LexCounsel</h2>
+
     <div>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
+        <a href="#/home">Home</a>
+        <a href="#/about">About</a>
     </div>
 </nav>
 
-<div class="hero" id="home">
-    <h1>Hello, I'm <span>Gokul Kumar</span></h1>
-    <p>Freelance Web Developer | Creative Designer</p>
-    <button onclick="document.getElementById('contact').scrollIntoView()">
-        Contact Me
-    </button>
+<!-- HOME PAGE -->
+<div id="home" class="page active">
+
+    <div class="hero">
+        <h1>Welcome to <span>LexCounsel</span></h1>
+        <p>Your Trusted Partner for Legal Guidance and Support</p>
+        <button onclick="location.hash='/about'">
+            Learn More
+        </button>
+    </div>
+
+    <section>
+        <h2>Our Legal Services</h2>
+
+        <div class="services">
+
+            <div class="card">
+                <h3>Family Law</h3>
+                <p>Legal guidance for family matters, divorce and related issues.</p>
+            </div>
+
+            <div class="card">
+                <h3>Business Law</h3>
+                <p>Legal assistance for business agreements and disputes.</p>
+            </div>
+
+            <div class="card">
+                <h3>Criminal Law</h3>
+                <p>Legal support and guidance for criminal cases.</p>
+            </div>
+
+            <div class="card">
+                <h3>Property Law</h3>
+                <p>Assistance with property matters and legal documentation.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section>
+        <h2>Contact Our Legal Team</h2>
+
+        <form onsubmit="submitForm(event)">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Describe your legal enquiry" required></textarea>
+            <button type="submit">Submit Enquiry</button>
+        </form>
+
+        <p id="message" style="margin-top:15px;"></p>
+    </section>
+
 </div>
 
-<section id="about">
-    <h2>About Me</h2>
-    <p>
-        I am a passionate freelancer interested in web development
-        and creating modern, user-friendly websites.
-    </p>
-</section>
+<!-- ABOUT PAGE -->
+<div id="about" class="page">
 
-<section id="services">
-    <h2>My Services</h2>
+    <section style="padding-top:100px;">
 
-    <div class="cards">
-        <div class="card">
-            <h3>Web Development</h3>
-            <p>Creating responsive and modern websites.</p>
+        <h2>About LexCounsel</h2>
+
+        <p>
+            LexCounsel is a legal advisor website designed to
+            provide information about legal services and guidance.
+        </p>
+
+        <br>
+
+        <p>
+            Our goal is to help individuals and businesses
+            understand their legal needs and find suitable assistance.
+        </p>
+
+        <div class="request">
+            <h3>HTTP Request Details</h3>
+            <p id="url">Request URL: /about</p>
+            <p id="method">Request Method: GET</p>
+            <p>Response Status: 200 OK</p>
         </div>
 
-        <div class="card">
-            <h3>Web Design</h3>
-            <p>Designing attractive and user-friendly interfaces.</p>
-        </div>
+        <button onclick="location.hash='/home'">
+            Back to Home
+        </button>
 
-        <div class="card">
-            <h3>UI/UX Design</h3>
-            <p>Building simple and effective user experiences.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section id="contact">
-    <h2>Contact Me</h2>
-
-    <form onsubmit="sendMessage(event)">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <textarea id="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-    </form>
-    <p id="result" style="margin-top:15px;"></p>
-</section>
+</div>
 
 <footer>
-    <p>© 2026 Gokul Kumar | Freelancer Portfolio</p>
+    <p>© 2026 LexCounsel | Legal Advisor Website</p>
 </footer>
 
 <script>
-    function sendMessage(event) {
+
+    function showPage() {
+
+        let route = location.hash || "#/home";
+
+        document.getElementById("home").classList.remove("active");
+        document.getElementById("about").classList.remove("active");
+
+        if (route === "#/about") {
+
+            document.getElementById("about").classList.add("active");
+
+            document.getElementById("url").innerText =
+                "Request URL: /about";
+
+        } else {
+
+            document.getElementById("home").classList.add("active");
+
+            document.getElementById("url").innerText =
+                "Request URL: /home";
+
+        }
+    }
+
+    window.addEventListener("hashchange", showPage);
+
+    showPage();
+
+    function submitForm(event) {
         event.preventDefault();
 
-        let name = document.getElementById("name").value;
-
-        document.getElementById("result").innerHTML =
-            "Thank you, " + name + "! Your message has been received.";
-
-        document.querySelector("form").reset();
+        document.getElementById("message").innerText =
+            "Your enquiry has been submitted successfully!";
+        
+        event.target.reset();
     }
+
 </script>
 
 </body>
